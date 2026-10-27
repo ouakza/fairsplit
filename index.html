@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f2">
+    <meta name="description" content="قسّم المصاريف المشتركة بسهولة، مباشرة في متصفحك وبلا حساب أو خادم.">
+    <title>قسمة عادلة — تقسيم المصاريف</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="settlement.js" defer></script>
+    <script src="currency.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="قسمة عادلة">
+        <span class="brand-mark" aria-hidden="true">÷</span>
+        <span>FairSplit</span>
+      </a>
+      <button class="language-button" id="language-toggle" type="button" aria-label="Switch language">English</button>
+    </header>
+
+    <main class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow" data-i18n="eyebrow">أداة مجانية وبسيطة</p>
+        <h1 id="page-title" data-i18n="title">قسمة عادلة</h1>
+        <p class="intro-copy" data-i18n="intro">أدخل ما دفعه كل شخص، وسنحسب الحصة والتحويلات اللازمة لتسوية الحساب.</p>
+        <p class="privacy-note"><span aria-hidden="true">●</span> <span data-i18n="privacy">حساباتك تبقى على هذا الجهاز — لا تسجيل ولا إرسال بيانات.</span></p>
+      </section>
+
+      <section class="panel input-panel" aria-labelledby="people-heading">
+        <div class="panel-heading">
+          <div>
+            <h2 id="people-heading" data-i18n="peopleHeading">الأشخاص والمبالغ</h2>
+            <p class="section-hint" data-i18n="peopleHint">أضف كل شخص والمبلغ الذي دفعه. اترك المبلغ صفرًا إن لم يدفع.</p>
+          </div>
+          <label class="currency-control">
+            <span data-i18n="currencyLabel">العملة</span>
+            <select id="currency-select" aria-label="العملة">
+              <option value="MAD">MAD — درهم مغربي</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="column-labels" aria-hidden="true">
+          <span data-i18n="nameColumn">الاسم</span>
+          <span data-i18n="paidColumn">المبلغ المدفوع</span>
+          <span></span>
+        </div>
+        <div id="participants-list" class="participants-list"></div>
+
+        <div class="form-actions">
+          <button class="button button-secondary" id="add-person" type="button"><span aria-hidden="true">＋</span> <span data-i18n="addPerson">إضافة شخص</span></button>
+          <button class="text-button" id="clear-all" type="button" data-i18n="clearAll">مسح الكل</button>
+        </div>
+      </section>
+
+      <section class="results" aria-labelledby="results-heading" aria-live="polite">
+        <div class="results-heading">
+          <div>
+            <p class="eyebrow" data-i18n="resultsEyebrow">النتيجة</p>
+            <h2 id="results-heading" data-i18n="resultsHeading">الحساب والتسوية</h2>
+          </div>
+          <button class="button button-secondary copy-button" id="copy-summary" type="button"><span aria-hidden="true">▣</span> <span data-i18n="copySummary">نسخ الملخص</span></button>
+        </div>
+
+        <div class="summary-cards">
+          <article class="summary-card">
+            <p data-i18n="totalPaid">إجمالي المصاريف</p>
+            <strong id="total-value">—</strong>
+          </article>
+          <article class="summary-card summary-card-accent">
+            <p data-i18n="averageShare">متوسط الحصة للشخص</p>
+            <strong id="average-value">—</strong>
+          </article>
+        </div>
+
+        <div class="panel breakdown-panel">
+          <h3 data-i18n="breakdownHeading">حصة كل شخص</h3>
+          <div id="breakdown-list" class="breakdown-list"></div>
+          <p class="rounding-note" data-i18n="roundingNote">عند تعذّر تقسيم المبلغ إلى سنتات متساوية، تُوزّع السنتات المتبقية حسب ترتيب القائمة.</p>
+        </div>
+
+        <div class="panel settlement-panel">
+          <h3 data-i18n="settlementHeading">التحويلات لتصفية الحساب</h3>
+          <p class="section-hint" data-i18n="settlementHint">أقل عدد عملي من التحويلات لتسوية المبالغ.</p>
+          <div id="settlement-list" class="settlement-list"></div>
+        </div>
+        <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <footer class="footer">
+        <span data-i18n="footer">مشروع مفتوح المصدر — لا تُحفظ أي بيانات بعد إغلاق الصفحة.</span>
+      </footer>
+    </main>
+  </body>
+</html>
